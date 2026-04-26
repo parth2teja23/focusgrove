@@ -57,13 +57,17 @@ You should see:
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=<your_project_url>
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=<your_anon_key>
+NEXT_PUBLIC_SITE_URL=<your_app_url>
 ```
 
 Example:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://abc123.supabase.co
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=eyJhbGc...
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
+
+For production, set `NEXT_PUBLIC_SITE_URL` to your deployed app URL (for example, `https://your-domain.com`).
 
 ## Step 6: Run Development Server
 
@@ -93,6 +97,10 @@ You should see the FocusGrove login page.
 5. For production, add your production callback URL too:
    - https://your-domain.com/auth/callback
 6. Save changes in Supabase provider settings
+
+Also set Supabase Authentication URL Configuration:
+- Site URL: `https://your-domain.com` (production) / `http://localhost:3000` (local)
+- Additional Redirect URLs must include both callback URLs above
 
 ## Verification Checklist
 

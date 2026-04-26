@@ -15,6 +15,11 @@ export default function LoginPage() {
   const router = useRouter();
   const supabase = createBrowserClient();
 
+  const getOAuthRedirectTo = () => {
+    const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || window.location.origin).replace(/\/$/, "");
+    return `${baseUrl}/auth/callback?next=${encodeURIComponent("/app/today")}`;
+  };
+
   const handleGoogleSignIn = async () => {
     setError(null);
     setLoading(true);
@@ -23,7 +28,7 @@ export default function LoginPage() {
       const { error: oauthError } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/callback?next=/app/today`,
+          redirectTo: getOAuthRedirectTo(),
         },
       });
 
